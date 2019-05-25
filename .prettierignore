@@ -1,0 +1,10 @@
+**/tests/fixtures/**/*
+**/dist
+**/coverage
+**/shared-fixtures
+**/tests/integration/fixtures/**/*
+**/lib/configs/recommended.json
+**/.vscode
+**/.nyc_output
+**/.next
+**/*.d.ts

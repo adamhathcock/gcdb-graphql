@@ -1,0 +1,19 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "noImplicitReturns": true,
+    "module": "commonjs",
+    "removeComments": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "strictPropertyInitialization": false,
+    "target": "es2017",
+    "jsx": "preserve",
+    "composite": true
+  },
+  "exclude": ["node_modules"]
+}

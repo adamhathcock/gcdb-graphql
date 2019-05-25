@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql:5.6
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: gcdb
+      MYSQL_DATABASE: gcdb
+    volumes: 
+      - ./data:/var/lib/mysql
+    ports: 
+     - 3306:3306

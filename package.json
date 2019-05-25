@@ -1,0 +1,38 @@
+{
+  "name": "gcdb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production ts-node -T index.ts",
+    "debug": "ts-node-dev --ignore-watch .next --nolazy --inspect-brk=9229 --transpileOnly index.ts",
+    "check": "npm run prettier:check && npm run eslint:check",
+    "eslint:check": "eslint --ext .ts .",
+    "prettier:check": "prettier --check \"./**/*.{ts,js,json,md}\"",
+    "fix": "npm run eslint:fix && npm run prettier:fix",
+    "eslint:fix": "eslint --ext .ts . --fix",
+    "prettier:fix": "prettier --write \"./**/*.{ts,js,json,md}\" --loglevel warn"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dataloader-sequelize": "^1.7.10",
+    "graphql": "^14.3.1",
+    "graphql-relay": "^0.6.0",
+    "graphql-sequelize": "^9.3.6",
+    "graphql-yoga": "^1.17.4",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.6",
+    "ts-node": "^8.1.1",
+    "typescript": "^3.4.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.17.1",
+    "ts-node-dev": "^1.0.0-pre.39"
+  }
+}

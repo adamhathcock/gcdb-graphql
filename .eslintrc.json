@@ -1,0 +1,21 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "rules": {
+    "callback-return": "error",
+    "handle-callback-err": "error",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/camelcase": ["error", { "properties": "never" }],
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      { "allowExpressions": true }
+    ]
+  }
+}
