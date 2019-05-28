@@ -1,10 +1,8 @@
-import server from "./server";
+import { getServer } from "./server";
 
 async function start(): Promise<void> {
-  // Start the GraphQL server
-  server.start(() => {
-    console.log("Server is running on localhost:4000");
-  });
+  const server = await getServer();
+  await server.start();
 }
 
-start();
+start().catch(console.log);

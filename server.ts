@@ -1,20 +1,12 @@
-import { Sequelize } from "sequelize";
 import { GraphQLServer } from "graphql-yoga";
-import { createContext, EXPECTED_OPTIONS_KEY } from "dataloader-sequelize";
-import { resolver } from "graphql-sequelize";
 
-import models from "./models";
 import { Issue } from "./models/Issue";
 import { Series } from "./models/Series";
-
-const sequelize = new Sequelize("mysql://root:gcdb@localhost:3306/gcdb");
-
-models(sequelize);
+import { getConnection } from "./models";
 
 const typeDefs = `
   type Query {
     issue(id: ID!): Issue
-    issues: [Issue]
     series(id: ID!): Series
   }
   type Issue {
@@ -28,32 +20,24 @@ const typeDefs = `
   }
 `;
 
-const resolvers = {
-  Query: {
-    issue: resolver(Issue),
-    issues: resolver(Issue),
-    series: resolver(Series)
-  },
-  Issue: {
-    series: resolver(Issue.Series)
-  }
-};
+export async function getServer(): Promise<GraphQLServer> {
+  const connection = await getConnection();
 
-resolver.contextToOptions = { [EXPECTED_OPTIONS_KEY]: EXPECTED_OPTIONS_KEY };
+  const resolvers = {
+    Query: {
+      issue: (_, { id }) => {
+        const repository = connection.getRepository(Issue);
+        return repository.findOne(id);
+      },
+      series: (_, { id }) => {
+        const repository = connection.getRepository(Series);
+        return repository.findOne(id);
+      }
+    }
+  };
 
-const server = new GraphQLServer({
-  typeDefs,
-  resolvers,
-  context() {
-    // For each request, create a DataLoader context for Sequelize to use
-    const dataloaderContext = createContext(sequelize);
-
-    // Using the same EXPECTED_OPTIONS_KEY, store the DataLoader context
-    // in the global request context
-    return {
-      [EXPECTED_OPTIONS_KEY]: dataloaderContext
-    };
-  }
-});
-
-export default server;
+  return new GraphQLServer({
+    typeDefs,
+    resolvers
+  });
+}

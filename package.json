@@ -11,19 +11,17 @@
     "prettier:check": "prettier --check \"./**/*.{ts,js,json,md}\"",
     "fix": "npm run eslint:fix && npm run prettier:fix",
     "eslint:fix": "eslint --ext .ts . --fix",
-    "prettier:fix": "prettier --write \"./**/*.{ts,js,json,md}\" --loglevel warn"
+    "prettier:fix": "prettier --write \"./**/*.{ts,js,json,md}\" --loglevel warn",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dataloader-sequelize": "^1.7.10",
-    "graphql": "^14.3.1",
-    "graphql-relay": "^0.6.0",
-    "graphql-sequelize": "^9.3.6",
     "graphql-yoga": "^1.17.4",
     "mysql2": "^1.6.5",
-    "sequelize": "^5.8.6",
+    "reflect-metadata": "^0.1.13",
     "ts-node": "^8.1.1",
+    "typeorm": "^0.2.17",
     "typescript": "^3.4.5"
   },
   "devDependencies": {

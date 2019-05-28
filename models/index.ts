@@ -1,8 +1,18 @@
-import issue from "./Issue";
-import series from "./Series";
-import { Sequelize } from "sequelize";
+import { Issue } from "./Issue";
+import { Series } from "./Series";
+import "reflect-metadata";
+import { createConnection, Connection } from "typeorm";
 
-export default (sequelize: Sequelize) => {
-  series(sequelize);
-  issue(sequelize);
-};
+export async function getConnection(): Promise<Connection> {
+  return createConnection({
+    type: "mysql",
+    host: "localhost",
+    port: 3306,
+    username: "root",
+    password: "gcdb",
+    database: "gcdb",
+    entities: [Issue, Series],
+    synchronize: false,
+    logging: true
+  });
+}

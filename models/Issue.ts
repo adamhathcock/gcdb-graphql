@@ -1,49 +1,33 @@
-import { Model, DataTypes, Sequelize, HasOne } from "sequelize";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  JoinColumn,
+  ManyToOne
+} from "typeorm";
+
 import { Series } from "./Series";
 
-export class Issue extends Model {
+@Entity({
+  name: "gcd_issue"
+})
+export class Issue {
+  @PrimaryGeneratedColumn()
   public id: number;
+  @Column()
   public number: string;
+  @Column()
   public title: string;
+  @Column()
   public volume: string;
+
+  @Column()
   public series_id: number;
-  // You can also pre-declare possible inclusions, these will only be populated if you
-  // actively include a relation.
-  public readonly series?: Series; // Note this is optional since it's only populated when explicitly requested in code
-  public static Series: HasOne<Issue, Series>;
+
+  @ManyToOne(() => Series)
+  @JoinColumn({
+    name: "series_id",
+    referencedColumnName: "id"
+  })
+  public readonly series?: Series;
 }
-
-export default (sequelize: Sequelize) => {
-  Issue.init(
-    {
-      id: {
-        type: DataTypes.INTEGER.UNSIGNED, // you can omit the `new` but this is discouraged
-        autoIncrement: true,
-        primaryKey: true
-      },
-      number: {
-        type: new DataTypes.STRING(50),
-        allowNull: false
-      },
-      title: {
-        type: new DataTypes.STRING(255),
-        allowNull: false
-      },
-      series_id: {
-        type: DataTypes.INTEGER.UNSIGNED // you can omit the `new` but this is discouraged
-      }
-    },
-    {
-      sequelize,
-      tableName: "gcd_issue"
-    }
-  );
-  Issue.removeAttribute("createdAt");
-  Issue.removeAttribute("updatedAt");
-
-  Issue.Series = Issue.hasOne(Series, {
-    sourceKey: "series_id",
-    foreignKey: "id",
-    as: "series" // this determines the name in `associations`!
-  });
-};

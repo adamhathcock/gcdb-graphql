@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "lib": ["es5", "es6", "esnext", "dom"],
     "noUnusedLocals": true,
     "esModuleInterop": true,
     "noImplicitReturns": true,
@@ -13,7 +14,8 @@
     "strictPropertyInitialization": false,
     "target": "es2017",
     "jsx": "preserve",
-    "composite": true
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "exclude": ["node_modules"]
 }
