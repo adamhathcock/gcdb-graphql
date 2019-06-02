@@ -2,6 +2,8 @@ import { Issue } from "./Issue";
 import { Series } from "./Series";
 import "reflect-metadata";
 import { createConnection, Connection } from "typeorm";
+import { StoryType } from "./StoryType";
+import { Story } from "./Story";
 
 export async function getConnection(): Promise<Connection> {
   return createConnection({
@@ -11,7 +13,7 @@ export async function getConnection(): Promise<Connection> {
     username: "root",
     password: "gcdb",
     database: "gcdb",
-    entities: [Issue, Series],
+    entities: [Issue, Series, Story, StoryType],
     synchronize: false,
     logging: true
   });

@@ -3,10 +3,12 @@ import {
   PrimaryGeneratedColumn,
   Column,
   JoinColumn,
-  ManyToOne
+  ManyToOne,
+  OneToMany
 } from "typeorm";
 
 import { Series } from "./Series";
+import { Story } from "./Story";
 
 @Entity({
   name: "gcd_issue"
@@ -24,13 +26,13 @@ export class Issue {
   @Column()
   public publication_date: string;
 
-  @Column()
-  public series_id: number;
-
   @ManyToOne(() => Series)
   @JoinColumn({
     name: "series_id",
     referencedColumnName: "id"
   })
   public readonly series?: Series;
+
+  @OneToMany(() => Story, story => story.issue)
+  public readonly stories?: Story[];
 }
