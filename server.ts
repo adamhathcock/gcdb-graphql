@@ -11,12 +11,19 @@ const typeDefs = `
   }
   type Issue {
     id: ID!
-    title: String
+    volume: String!
+    notes: String!
+    publication_date: String!
+
     series: Series
   }
   type Series {
     id: ID!
-    name: String
+    name: String!
+    notes: String!
+
+    year_began: Int!
+    year_ended: Int
   }
 `;
 

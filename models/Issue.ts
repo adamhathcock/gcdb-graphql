@@ -17,9 +17,12 @@ export class Issue {
   @Column()
   public number: string;
   @Column()
-  public title: string;
-  @Column()
   public volume: string;
+
+  @Column()
+  public notes: string;
+  @Column()
+  public publication_date: string;
 
   @Column()
   public series_id: number;
