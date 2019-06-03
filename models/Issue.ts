@@ -18,13 +18,14 @@ export class Issue {
   public id: number;
   @Column()
   public number: string;
-  @Column()
-  public volume: string;
 
   @Column()
   public notes: string;
+  
   @Column()
   public publication_date: string;
+  @Column()
+  public key_date: string;
 
   @ManyToOne(() => Series)
   @JoinColumn({

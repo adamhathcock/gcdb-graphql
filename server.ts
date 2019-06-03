@@ -13,9 +13,10 @@ const typeDefs = `
   }
   type Issue {
     id: ID!
-    volume: String!
+    number: String!
     notes: String!
     publication_date: String!
+    key_date: String!
 
     series: Series
     stories: [Story]
