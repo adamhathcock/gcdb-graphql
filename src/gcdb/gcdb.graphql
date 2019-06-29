@@ -1,0 +1,48 @@
+type Query {
+    issue(id: Int!): Issue
+    series(id: Int!): Series
+    story(id: Int!): Story
+  }
+  type Issue {
+    id: Int!
+    number: String!
+    notes: String!
+    publication_date: String!
+    key_date: String!
+
+    series: Series
+    stories: [Story]
+  }
+  type Series {
+    id: Int!
+    name: String!
+    notes: String!
+
+    year_began: Int!
+    year_ended: Int
+
+    issues: [Issue]
+  }
+  type Story {
+    id: Int!
+    title: String!
+    notes: String!
+    feature: String!
+
+    script: String!
+    pencils: String!
+    inks: String!
+    colors: String!
+    letters: String!
+    genre: String!
+    characters: String!
+    synopsis: String!
+
+
+    issue: Issue
+    type: StoryType
+  }
+  type StoryType {
+    id: Int!
+    name: String!
+  }

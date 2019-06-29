@@ -21,7 +21,7 @@ export class Issue {
 
   @Column()
   public notes: string;
-  
+
   @Column()
   public publication_date: string;
   @Column()

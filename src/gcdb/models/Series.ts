@@ -16,7 +16,6 @@ export class Series {
   @Column()
   public year_ended: number;
 
-
   @Column()
   public created: string;
   @Column()

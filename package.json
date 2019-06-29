@@ -12,25 +12,37 @@
     "fix": "npm run eslint:fix && npm run prettier:fix",
     "eslint:fix": "eslint --ext .ts . --fix",
     "prettier:fix": "prettier --write \"./**/*.{ts,js,json,md}\" --loglevel warn",
-    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
+    "compile": "tsc  --noEmit -p .",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "generate-typings": "ts-node src/generate-typings"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "graphql-yoga": "^1.17.4",
+    "@nestjs/common": "^6.3.2",
+    "@nestjs/core": "^6.3.2",
+    "@nestjs/graphql": "^6.2.4",
+    "@nestjs/platform-express": "^6.3.2",
+    "@nestjs/typeorm": "^6.1.2",
+    "apollo-server-express": "^2.6.7",
+    "class-transformer": "0.2.3",
+    "class-validator": "0.9.1",
+    "graphql": "14.4.1",
+    "graphql-tools": "^4.0.5",
     "mysql2": "^1.6.5",
-    "reflect-metadata": "^0.1.13",
-    "ts-node": "^8.2.0",
-    "typeorm": "^0.2.17",
-    "typescript": "^3.5.1"
+    "reflect-metadata": "0.1.13",
+    "ts-node": "^8.3.0",
+    "typeorm": "^0.2.18",
+    "typescript": "^3.5.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^1.9.0",
-    "@typescript-eslint/parser": "^1.9.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
+    "@types/graphql": "^14.2.2",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "prettier": "^1.17.1",
-    "ts-node-dev": "^1.0.0-pre.39"
+    "prettier": "^1.18.2",
+    "ts-node-dev": "^1.0.0-pre.40"
   }
 }

@@ -1,4 +1,11 @@
-import { PrimaryGeneratedColumn, Column, Entity, OneToOne, JoinColumn, ManyToOne } from "typeorm";
+import {
+  PrimaryGeneratedColumn,
+  Column,
+  Entity,
+  OneToOne,
+  JoinColumn,
+  ManyToOne
+} from "typeorm";
 import { StoryType } from "./StoryType";
 import { Issue } from "./Issue";
 
@@ -31,7 +38,6 @@ export class Story {
   @Column()
   public notes: string;
 
-
   @Column()
   public created: string;
   @Column()
@@ -39,7 +45,8 @@ export class Story {
 
   @JoinColumn({
     name: "type_id",
-    referencedColumnName: "id"})
+    referencedColumnName: "id"
+  })
   @OneToOne(() => StoryType)
   public readonly type: StoryType;
 
@@ -50,4 +57,3 @@ export class Story {
   })
   public readonly issue: Issue;
 }
-
